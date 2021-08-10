@@ -1,9 +1,20 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-color: #151515;
 }
 
+#container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+}
+
 header {
-  position: relative;
+  height: 3rem;
 }
 
 header h1 {
@@ -56,4 +67,26 @@ h1 .colour-fill {
   50%  { background-color: #FCD757 }
   75%  { background-color: #B5F8FE }
   100% { background-color: #9D8DF1 }
+}
+
+.challenge {
+  flex: 1 1 0%;
+  display: flex;
+  border: 1px #cbd5e0;
+  width: 100%;
+}
+
+#resizer {
+  position: absolute;
+  /* Doesn't allow to select the content inside */
+  user-select: none;
+
+  background-color: #cbd5e0;
+  cursor: ew-resize;
+  height: 100%;
+  width: 2px;
+}
+
+#output {
+  flex: 1 1 0%;
 }
