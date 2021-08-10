@@ -1,1 +1,34 @@
-style.css
+body {
+  background-color: #151515;
+}
+
+header h1 {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 700;
+  color: #EEEEEE;
+
+  text-align: center;
+  margin-top: 5rem;
+  font-size: 4rem;
+}
+
+h1 .colour-fill {
+  font-weight: 900;
+
+  background-color: #9D8DF1
+
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: fill-colour 30s ease infinite;
+}
+
+@keyframes fill-colour {
+  0%   { background-color: #9D8DF1 }
+  25%  { background-color: #FC7753 }
+  50%  { background-color: #FCD757 }
+  75%  { background-color: #B5F8FE }
+  100% { background-color: #9D8DF1 }
+}
