@@ -2,14 +2,37 @@ body {
   background-color: #151515;
 }
 
+header {
+  position: relative;
+}
+
 header h1 {
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 700;
   color: #EEEEEE;
 
-  text-align: center;
   margin-top: 5rem;
   font-size: 4rem;
+  /* Centering with text-align would stop us from using a transition */
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
+  /* This line is needed to avoid the text wrapping onto two lines */
+  white-space: nowrap;
+}
+
+/* Only animate the move if the user doesn't prefer reduced motion */
+@media (prefers-reduced-motion: no-preference) {
+  header h1 {
+    transition: transform 1s, left 1s, margin-top 1s, font-size 1s;
+  }
+}
+
+.h1-challenge {
+  transform: translateX(0%);
+  left: 0%;
+  margin-top: 0rem;
+  font-size: 2rem;
 }
 
 h1 .colour-fill {
@@ -22,6 +45,8 @@ h1 .colour-fill {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
+  /* Should be slow enough and doesn't use move position
+     so no need to worry about prefers-reduced-motion */
   animation: fill-colour 30s ease infinite;
 }
 
