@@ -82,10 +82,14 @@ h1 .colour-fill {
   /* Doesn't allow to select the content inside */
   user-select: none;
 
-  background-color: #cbd5e0;
   cursor: ew-resize;
-  height: 100%;
-  width: 2px;
+  top: 40vh;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#input {
+  width: 50%;
 }
 
 #output {
