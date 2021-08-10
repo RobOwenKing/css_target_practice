@@ -2,10 +2,31 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Getting Started</title>
-    <script src="https://unpkg.com/lodash@4.17.20"></script>
+
+    <title>CSS Target Practice</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700;900&display=swap" rel="stylesheet">
   </head>
   <body>
-    <script src="./src/index.js"></script>
+    <div id="container">
+      <header>
+        <h1 class="h1-challenge"><span class="colour-fill">CSS</span> Target Practice</h1>
+      </header>
+      <div class="challenge">
+        <div id="input">Left</div>
+
+        <div id="resizer">
+          <svg viewBox="0 0 100 100" height="32" width="32">
+            <circle cx="50" cy="50" r="50" fill="gray" />
+          </svg>
+        </div>
+
+        <div id="output">Right</div>
+      </div>
+    </div>
+    <script type="module" src="./src/index.js"></script>
   </body>
 </html>
