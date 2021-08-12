@@ -110,15 +110,17 @@ h1 .colour-fill {
   box-sizing: border-box;
   position: absolute;
   height: 100%;
-  width: 90%;
+  width: 100%;
   padding: 0.5em;
-  border: 1px solid black;
+  margin: 0;
+  border: none;
   font-size: 1rem;
   line-height: 1.3rem;
-  font-family: monospace;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
   white-space: pre;
   word-wrap: break-word;
 }
+
 
 .editor .input {
   z-index: 1;
