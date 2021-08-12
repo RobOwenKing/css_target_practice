@@ -99,10 +99,9 @@ h1 .colour-fill {
 
 .editor {
   position: relative;
-  height: 30rem;
+  height: 90%;
   padding: 0;
   border: none;
-  margin: 2rem 0;
 }
 
 .editor .input,
@@ -119,6 +118,7 @@ h1 .colour-fill {
   font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
   white-space: pre;
   word-wrap: break-word;
+  resize: none;
 }
 
 
