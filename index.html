@@ -18,13 +18,12 @@
         <h1 class="h1-challenge"><span class="colour-fill">CSS</span> Target Practice</h1>
       </header>
       <div class="challenge">
+        <!-- Based on https://www.horuskol.net/blog/2020-03-05/live-code-highlighting-in-the-browser-with-vanilla-javascript/ -->
         <div id="input">
-          <!-- <pre>
-            <code id="challenge-html">
-
-            </code>
-          </pre> -->
-          <pre><code class="language-css">p { color: red }</code></pre>
+          <fieldset class="editor">
+            <textarea id="input-textarea" aria-controls="code-highlighter" class="input" autocapitalize="off" spellcheck="false"></textarea>
+            <pre><code id="input-code" class="language-css"></code></pre>
+          </fieldset>
         </div>
 
         <div id="resizer">
