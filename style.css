@@ -96,10 +96,17 @@ h1 .colour-fill {
   flex: 1 1 0%;
 }
 
+#output iframe {
+  width: 100%;
+}
+
+#output iframe,
+.editor {
+  height: 90%;
+}
 
 .editor {
   position: relative;
-  height: 90%;
   padding: 0;
   border: none;
 }
