@@ -132,7 +132,7 @@ h1 .colour-fill {
 .editor .input {
   z-index: 1;
   color: transparent;
-  caret-color: black;
+  caret-color: white;
   background-color: transparent;
 }
 
