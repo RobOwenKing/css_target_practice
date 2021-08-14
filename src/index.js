@@ -10,6 +10,8 @@ const inputTextarea = document.getElementById('input-textarea');
 const inputCode = document.getElementById('input-code');
 const outputUser = document.getElementById('output-user');
 
+const inputTextareaStartHeight = inputTextarea.getBoundingClientRect().height;
+
 const html = '<p>Test!</p>';
 
 /* https://stackoverflow.com/a/61421435 */
@@ -30,6 +32,7 @@ inputTextarea.addEventListener('input', (event) => {
   const codeToHighlight = inputTextarea.value;
   inputCode.innerHTML = Prism.highlight(codeToHighlight, Prism.languages.css, 'css');
   updateOutputUserDoc(codeToHighlight);
+  inputTextarea.style.height = `${Math.max(inputTextareaStartHeight, inputTextarea.scrollHeight)}px`;
 });
 
 const mapCharsToEscape = {
