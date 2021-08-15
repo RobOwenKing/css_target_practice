@@ -95,3 +95,51 @@ h1 .colour-fill {
 #output {
   flex: 1 1 0%;
 }
+
+#output iframe {
+  width: 100%;
+}
+
+#output iframe,
+.editor {
+  height: 90%;
+}
+
+.editor {
+  position: relative;
+  padding: 0;
+  border: none;
+}
+
+.editor .input,
+.editor .highlighted-output {
+  box-sizing: border-box;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  padding: 0.5em;
+  margin: 0;
+  border: none;
+  font-size: 1rem;
+  line-height: 1.3rem;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  white-space: pre;
+  word-wrap: break-word;
+  resize: none;
+}
+
+
+.editor .input {
+  z-index: 1;
+  color: transparent;
+  caret-color: white;
+  background-color: transparent;
+}
+
+.editor .highlighted-output {
+  z-index: 0;
+}
+
+iframe {
+  background-color: #EEEEEE;
+}

@@ -5,10 +5,12 @@
 
     <title>CSS Target Practice</title>
 
-    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <link href="src/prism/prism.css" rel="stylesheet" />
   </head>
   <body>
     <div id="container">
@@ -16,17 +18,27 @@
         <h1 class="h1-challenge"><span class="colour-fill">CSS</span> Target Practice</h1>
       </header>
       <div class="challenge">
-        <div id="input">Left</div>
+        <!-- Based on https://www.horuskol.net/blog/2020-03-05/live-code-highlighting-in-the-browser-with-vanilla-javascript/ -->
+        <div id="input">
+          <fieldset class="editor">
+            <textarea id="input-textarea" aria-controls="code-highlighter" class="input" autocapitalize="off" spellcheck="false"></textarea>
+            <!-- Has to be long line because <pre> otherwise tabs in the <code> -->
+            <pre id="input-pre" class="highlighted-output"><code id="input-code" class="language-css"></code></pre>
+          </fieldset>
+        </div>
 
         <div id="resizer">
           <svg viewBox="0 0 100 100" height="32" width="32">
-            <circle cx="50" cy="50" r="50" fill="gray" />
+            <circle cx="50" cy="50" r="50" fill="#9D8DF1" />
           </svg>
         </div>
 
-        <div id="output">Right</div>
+        <div id="output">
+          <iframe sandbox="allow-scripts" id="output-user"></iframe>
+        </div>
       </div>
     </div>
     <script type="module" src="./src/index.js"></script>
+    <script src="src/prism/prism.js"></script>
   </body>
 </html>
