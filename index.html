@@ -22,7 +22,8 @@
         <div id="input">
           <fieldset class="editor">
             <textarea id="input-textarea" aria-controls="code-highlighter" class="input" autocapitalize="off" spellcheck="false"></textarea>
-            <pre class="highlighted-output"><code id="input-code" class="language-css"></code></pre>
+            <!-- Has to be long line because <pre> otherwise tabs in the <code> -->
+            <pre id="input-pre" class="highlighted-output"><code id="input-code" class="language-css"></code></pre>
           </fieldset>
         </div>
 

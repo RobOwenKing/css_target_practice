@@ -109,7 +109,6 @@ h1 .colour-fill {
   position: relative;
   padding: 0;
   border: none;
-  overflow-y: scroll;
 }
 
 .editor .input,

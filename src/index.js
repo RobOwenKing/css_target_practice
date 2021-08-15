@@ -7,10 +7,9 @@ import { initResizeable } from './resize.js';
 initResizeable();
 
 const inputTextarea = document.getElementById('input-textarea');
+const inputPre = document.getElementById('input-pre');
 const inputCode = document.getElementById('input-code');
 const outputUser = document.getElementById('output-user');
-
-const inputTextareaStartHeight = inputTextarea.getBoundingClientRect().height;
 
 const html = '<p>Test!</p>';
 
@@ -27,12 +26,14 @@ const updateOutputUserDoc = (css) => {
   outputUser.src = 'data:text/html,' + encodeURIComponent(iframeHTML);
 };
 
-
 inputTextarea.addEventListener('input', (event) => {
   const codeToHighlight = inputTextarea.value;
   inputCode.innerHTML = Prism.highlight(codeToHighlight, Prism.languages.css, 'css');
   updateOutputUserDoc(codeToHighlight);
-  inputTextarea.style.height = `${Math.max(inputTextareaStartHeight, inputTextarea.scrollHeight)}px`;
+});
+
+inputTextarea.addEventListener('scroll', (event) => {
+  inputPre.scrollTop = inputTextarea.scrollTop;
 });
 
 const mapCharsToEscape = {
