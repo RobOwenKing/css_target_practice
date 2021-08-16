@@ -24,11 +24,11 @@
             <li data-tab-target="#challenge-html" data-tab-type="#input">HTML</li>
             <li data-tab-target="#input-css" data-tab-type="#input">Your CSS</li>
           </ul>
-          <div id="challenge-html" class="tab-active">
+          <div id="challenge-html" data-tab-content class="display-content">
             <!-- Has to be long line because <pre> otherwise tabs in the <code> -->
             <pre id="html-pre" class="highlighted-output"><code id="html-code" class="language-html"></code></pre>
           </div>
-          <fieldset class="editor" id="input-css">
+          <fieldset class="editor" id="input-css" data-tab-content>
             <textarea id="input-textarea" aria-controls="code-highlighter" class="input" autocapitalize="off" spellcheck="false"></textarea>
             <pre id="input-pre" class="highlighted-output"><code id="input-code" class="language-css"></code></pre>
           </fieldset>

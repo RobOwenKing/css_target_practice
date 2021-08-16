@@ -48,3 +48,15 @@ const mapCharsToEscape = {
 const escapeHtml = (htmlString) => {
   return htmlString.replace(/[&<>"']/g, function(m) { return mapCharsToEscape[m]; });
 };
+
+/* Based on method used in https://www.youtube.com/watch?v=5L6h_MrNvsk by Web Dev Simplified */
+const tabs = document.querySelectorAll('[data-tab-target]');
+tabs.forEach(tab => {
+  tab.addEventListener('click', event => {
+    const toHide = document.querySelector(`${tab.dataset.tabType} .display-content`);
+    toHide.classList.remove('display-content');
+
+    const toDisplay = document.querySelector(tab.dataset.tabTarget);
+    toDisplay.classList.add('display-content');
+  })
+})

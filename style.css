@@ -152,3 +152,11 @@ iframe {
   padding: 0;
   color: #CCCCCC;
 }
+
+[data-tab-content] {
+  display: none;
+}
+
+.display-content {
+  display: block;
+}
