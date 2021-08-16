@@ -75,6 +75,7 @@ h1 .colour-fill {
   display: flex;
   border: 1px #cbd5e0;
   width: 100%;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 }
 
 #resizer {
@@ -122,7 +123,6 @@ h1 .colour-fill {
   border: none;
   font-size: 1rem;
   line-height: 1.3rem;
-  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
   white-space: pre;
   word-wrap: break-word;
   resize: none;
@@ -142,4 +142,13 @@ h1 .colour-fill {
 
 iframe {
   background-color: #EEEEEE;
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  color: #CCCCCC;
 }
