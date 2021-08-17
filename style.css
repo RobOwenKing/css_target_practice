@@ -70,6 +70,13 @@ h1 .colour-fill {
   100% { background-color: #9D8DF1 }
 }
 
+textarea,
+pre,
+code,
+.tabs {
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+}
+
 .challenge {
   flex: 1 1 0%;
   display: flex;
@@ -101,18 +108,18 @@ h1 .colour-fill {
 }
 
 #output iframe,
-.editor {
+.input-field {
   height: 90%;
 }
 
-.editor {
+.input-field {
   position: relative;
   padding: 0;
   border: none;
 }
 
-.editor .input,
-.editor .highlighted-output {
+.input-field .input,
+.input-field .highlighted-output {
   box-sizing: border-box;
   position: absolute;
   height: 100%;
@@ -122,24 +129,53 @@ h1 .colour-fill {
   border: none;
   font-size: 1rem;
   line-height: 1.3rem;
-  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
   white-space: pre;
   word-wrap: break-word;
   resize: none;
 }
 
 
-.editor .input {
+.input-field .input {
   z-index: 1;
   color: transparent;
   caret-color: white;
   background-color: transparent;
 }
 
-.editor .highlighted-output {
+.input-field .highlighted-output {
   z-index: 0;
 }
 
 iframe {
-  background-color: #EEEEEE;
+  background-color: #FFFFFF;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  margin: 8px 0;
+  padding: 0;
+  color: #CCCCCC;
+}
+
+[data-tab-target] {
+  cursor: pointer;
+  margin: 0 12px;
+}
+
+[data-tab-content] {
+  display: none;
+}
+
+.display-content {
+  display: block;
+}
+
+.active-tab {
+  color: #FCD757;
+}
+
+fieldset {
+  margin: 0;
 }

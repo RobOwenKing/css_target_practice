@@ -20,9 +20,16 @@
       <div class="challenge">
         <!-- Based on https://www.horuskol.net/blog/2020-03-05/live-code-highlighting-in-the-browser-with-vanilla-javascript/ -->
         <div id="input">
-          <fieldset class="editor">
-            <textarea id="input-textarea" aria-controls="code-highlighter" class="input" autocapitalize="off" spellcheck="false"></textarea>
+          <ul class="tabs">
+            <li class="active-tab" data-tab-target="#challenge-html" data-tab-type="#input">HTML</li>
+            <li data-tab-target="#input-css" data-tab-type="#input">Your CSS</li>
+          </ul>
+          <div id="challenge-html" data-tab-content class="input-field display-content">
             <!-- Has to be long line because <pre> otherwise tabs in the <code> -->
+            <pre id="html-pre" class="highlighted-output"><code id="html-code" class="language-html"></code></pre>
+          </div>
+          <fieldset class="input-field" id="input-css" data-tab-content>
+            <textarea id="input-textarea" aria-controls="code-highlighter" class="input" autocapitalize="off" spellcheck="false"></textarea>
             <pre id="input-pre" class="highlighted-output"><code id="input-code" class="language-css"></code></pre>
           </fieldset>
         </div>
@@ -34,7 +41,12 @@
         </div>
 
         <div id="output">
-          <iframe sandbox="allow-scripts" id="output-user"></iframe>
+          <ul class="tabs">
+            <li class="active-tab" data-tab-target="#output-target" data-tab-type="#output">The target</li>
+            <li data-tab-target="#output-user" data-tab-type="#output">Your attempt</li>
+          </ul>
+          <iframe sandbox="allow-scripts" id="output-target" class="display-content" data-tab-content></iframe>
+          <iframe sandbox="allow-scripts" id="output-user" data-tab-content></iframe>
         </div>
       </div>
     </div>
