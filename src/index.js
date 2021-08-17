@@ -6,6 +6,7 @@ import { initResizeable } from './resize.js';
 */
 initResizeable();
 
+const htmlCode = document.getElementById('html-code');
 const inputTextarea = document.getElementById('input-textarea');
 const inputPre = document.getElementById('input-pre');
 const inputCode = document.getElementById('input-code');
@@ -36,7 +37,7 @@ inputTextarea.addEventListener('scroll', (event) => {
   inputPre.scrollTop = inputTextarea.scrollTop;
 });
 
-const mapCharsToEscape = {
+/*const mapCharsToEscape = {
   '&': '&amp;',
   '<': '&lt;',
   '>': '&gt;',
@@ -44,17 +45,20 @@ const mapCharsToEscape = {
   "'": '&#039;'
 };
 
-/* https://stackoverflow.com/a/4835406 */
+ https://stackoverflow.com/a/4835406
 const escapeHtml = (htmlString) => {
   return htmlString.replace(/[&<>"']/g, function(m) { return mapCharsToEscape[m]; });
 };
+*/
+
+htmlCode.innerHTML = Prism.highlight(html, Prism.languages.html, 'html');
 
 /* Based on method used in https://www.youtube.com/watch?v=5L6h_MrNvsk by Web Dev Simplified */
 const tabs = document.querySelectorAll('[data-tab-target]');
 tabs.forEach(tab => {
   tab.addEventListener('click', event => {
     const toHide = document.querySelector(`${tab.dataset.tabType} .display-content`);
-    toHide.classList.remove('display-content');
+    if (toHide) { toHide.classList.remove('display-content'); }
 
     const toDisplay = document.querySelector(tab.dataset.tabTarget);
     toDisplay.classList.add('display-content');
