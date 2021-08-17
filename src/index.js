@@ -15,7 +15,7 @@ const outputUser = document.getElementById('output-user');
 const html = '<p>Test!</p>';
 
 /* https://stackoverflow.com/a/61421435 */
-const updateOutputUserDoc = (css) => {
+const updateOutput = (css, iframe) => {
   const iframeHTML = `
     <!doctype html>
     <html>
@@ -24,13 +24,13 @@ const updateOutputUserDoc = (css) => {
       </head>
       <body>${html}</body>
     </html>`;
-  outputUser.src = 'data:text/html,' + encodeURIComponent(iframeHTML);
+  iframe.src = 'data:text/html,' + encodeURIComponent(iframeHTML);
 };
 
 inputTextarea.addEventListener('input', (event) => {
-  const codeToHighlight = inputTextarea.value;
-  inputCode.innerHTML = Prism.highlight(codeToHighlight, Prism.languages.css, 'css');
-  updateOutputUserDoc(codeToHighlight);
+  const userCSS = inputTextarea.value;
+  inputCode.innerHTML = Prism.highlight(userCSS, Prism.languages.css, 'css');
+  updateOutput(userCSS, outputUser);
 });
 
 inputTextarea.addEventListener('scroll', (event) => {
