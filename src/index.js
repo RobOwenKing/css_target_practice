@@ -57,10 +57,15 @@ htmlCode.innerHTML = Prism.highlight(html, Prism.languages.html, 'html');
 const tabs = document.querySelectorAll('[data-tab-target]');
 tabs.forEach(tab => {
   tab.addEventListener('click', event => {
-    const toHide = document.querySelector(`${tab.dataset.tabType} .display-content`);
-    if (toHide) { toHide.classList.remove('display-content'); }
+    const oldContent = document.querySelector(`${tab.dataset.tabType} .display-content`);
+    if (oldContent) { oldContent.classList.remove('display-content'); }
 
-    const toDisplay = document.querySelector(tab.dataset.tabTarget);
-    toDisplay.classList.add('display-content');
+    const newContent = document.querySelector(tab.dataset.tabTarget);
+    newContent.classList.add('display-content');
+
+    const oldTab = document.querySelector(`${tab.dataset.tabType} .active-tab`);
+    if (oldTab) { oldTab.classList.remove('active-tab'); }
+
+    tab.classList.add('active-tab');
   })
 })
