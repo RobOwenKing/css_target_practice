@@ -41,7 +41,12 @@
         </div>
 
         <div id="output">
-          <iframe sandbox="allow-scripts" id="output-user"></iframe>
+          <ul class="tabs">
+            <li class="active-tab" data-tab-target="#output-target" data-tab-type="#output">The target</li>
+            <li data-tab-target="#output-user" data-tab-type="#output">Your attempt</li>
+          </ul>
+          <iframe sandbox="allow-scripts" id="output-target" class="display-content" data-tab-content></iframe>
+          <iframe sandbox="allow-scripts" id="output-user" data-tab-content></iframe>
         </div>
       </div>
     </div>
