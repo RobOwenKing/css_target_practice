@@ -50,12 +50,12 @@ header h1 {
 h1 .colour-fill {
   font-weight: 900;
 
-  background-color: #9D8DF1
+/*  background-color: #9D8DF1
 
   background-clip: text;
   text-fill-color: transparent;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;*/
 
   /* Should be slow enough and doesn't use move position
      so no need to worry about prefers-reduced-motion */
@@ -63,11 +63,11 @@ h1 .colour-fill {
 }
 
 @keyframes fill-colour {
-  0%   { background-color: #9D8DF1 }
-  25%  { background-color: #FC7753 }
-  50%  { background-color: #FCD757 }
-  75%  { background-color: #B5F8FE }
-  100% { background-color: #9D8DF1 }
+  0%   { color: #9D8DF1 }
+  25%  { color: #FC7753 }
+  50%  { color: #FCD757 }
+  75%  { color: #B5F8FE }
+  100% { color: #9D8DF1 }
 }
 
 textarea,
