@@ -45,3 +45,9 @@ initResizeable();
   eg: switch from seeing html-code to input-code
 */
 initTabs();
+
+fetch('http://localhost:3000/challenges/1')
+    .then(response => response.json())
+    .then((data) => {
+      console.log(data);
+    });
