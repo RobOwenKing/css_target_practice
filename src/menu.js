@@ -9,8 +9,7 @@ const onLoadFail = () => {
 
 const populateMenu = async () => {
   try {
-    const data = await fetch('http://localhost:3000/challenges/1')
-        .then(response => response.json());
+    const response = await fetch('http://localhost:3000/challenges/1');
 
     if (!response.ok) {
       onLoadFail();
