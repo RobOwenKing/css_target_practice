@@ -1,3 +1,4 @@
+import { initMenu } from './menu.js';
 import { initResizeable } from './resize.js';
 import { initTabs } from './tabs.js';
 
@@ -34,7 +35,11 @@ inputTextarea.addEventListener('scroll', (event) => {
 
 htmlCode.innerHTML = Prism.highlight(html, Prism.languages.html, 'html');
 
-
+/*
+  Populates the <select> with <option>s based on the API
+  and adds an Event listener to display chosen challenge
+*/
+initMenu();
 /*
   Adds an Event listener to allow users to adjust
   the relative widths of the input and output
@@ -45,9 +50,3 @@ initResizeable();
   eg: switch from seeing html-code to input-code
 */
 initTabs();
-
-fetch('http://localhost:3000/challenges/1')
-    .then(response => response.json())
-    .then((data) => {
-      console.log(data);
-    });
