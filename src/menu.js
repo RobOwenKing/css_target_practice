@@ -34,9 +34,37 @@ const populateMenu = async () => {
   }
 
   buildMenu(data);
-  console.log(data);
+};
+
+/**
+ * Retrieves the challenge selected by the user
+ * @see onFormSubmit()
+*/
+const loadChallenge = async () => {
+  const response = await fetch(`http://localhost:3000/challenges/${challengeSelect.value}`);
+  const data = await response.json();
+
+  return data;
+};
+
+/**
+ * @param {Event} event - The submit event from addEventListener
+*/
+const onFormSubmit = async (event) => {
+  // Need to prevent default form submission behaviour
+  event.preventDefault();
+
+  let challenge;
+  try {
+    challenge = await loadChallenge();
+  } catch(e) {
+    onLoadFail();
+  }
+
+  console.log(challenge);
 };
 
 export const initMenu = () => {
   populateMenu();
+  challengeForm.addEventListener('submit', onFormSubmit);
 };
