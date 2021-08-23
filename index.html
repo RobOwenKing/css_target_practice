@@ -17,6 +17,19 @@
       <header>
         <h1 class="h1-challenge"><span class="colour-fill">CSS</span> Target Practice</h1>
       </header>
+      <div id="menu">
+        <form id="challenge-form">
+          <label for="challenge-select">Choose your challenge:</label>
+          <select name="challenges" id="challenge-select" required>
+            <option value="">--Please choose:--</option>
+            <option value="test1">Test 1</option>
+            <option value="test2">Test 2</option>
+            <option value="test3">Test 3</option>
+          </select>
+
+          <input type="submit" value="Go!">
+        </form>
+      </div>
       <div class="challenge">
         <!-- Based on https://www.horuskol.net/blog/2020-03-05/live-code-highlighting-in-the-browser-with-vanilla-javascript/ -->
         <div id="input">
