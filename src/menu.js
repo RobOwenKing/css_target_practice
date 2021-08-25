@@ -11,8 +11,10 @@ const loadChallenges = async () => {
 };
 
 const onLoadFail = () => {
-  loading.classList.remove('display-content');
-  loadError.classList.add('display-content');
+  loading.classList.remove('display-block');
+  challengeForm.classList.remove('display-block');
+
+  loadError.classList.add('display-block');
 };
 
 const buildMenu = (data) => {
@@ -20,8 +22,8 @@ const buildMenu = (data) => {
     challengeSelect.insertAdjacentHTML('beforeend', `<option value=${challenge.id}>${challenge.name}</option>`);
   })
 
-  loading.classList.remove('display-content');
-  challengeForm.classList.add('display-content');
+  loading.classList.remove('display-block');
+  challengeForm.classList.add('display-block');
 };
 
 const populateMenu = async () => {
@@ -31,6 +33,7 @@ const populateMenu = async () => {
     data = await loadChallenges();
   } catch(e) {
     onLoadFail();
+    return;
   }
 
   buildMenu(data);
@@ -59,6 +62,7 @@ const onFormSubmit = async (event) => {
     challenge = await loadChallenge();
   } catch(e) {
     onLoadFail();
+    return;
   }
 
   console.log(challenge);

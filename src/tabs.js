@@ -5,12 +5,12 @@ export const initTabs = () => {
   tabs.forEach(tab => {
     tab.addEventListener('click', event => {
       // Hide currently displayed content
-      const oldContent = document.querySelector(`${tab.dataset.tabType} .display-content`);
-      if (oldContent) { oldContent.classList.remove('display-content'); }
+      const oldContent = document.querySelector(`${tab.dataset.tabType} .display-block`);
+      if (oldContent) { oldContent.classList.remove('display-block'); }
 
       // Display desired content
       const newContent = document.querySelector(tab.dataset.tabTarget);
-      newContent.classList.add('display-content');
+      newContent.classList.add('display-block');
 
       // Remove active styling from tab for previous content
       const oldTab = document.querySelector(`${tab.dataset.tabType} .active-tab`);
