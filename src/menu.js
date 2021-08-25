@@ -1,7 +1,13 @@
+const header = document.querySelector('header');
+
+const menuDiv = document.getElementById('menu');
 const loading = document.getElementById('loading');
 const loadError = document.getElementById('load-error');
 const challengeForm = document.getElementById('challenge-form');
 const challengeSelect = document.getElementById('challenge-select');
+
+const challengeDiv = document.getElementById('challenge');
+const htmlCode = document.getElementById('html-code');
 
 const loadChallenges = async () => {
   const response = await fetch('http://localhost:3000/challenges');
@@ -50,6 +56,17 @@ const loadChallenge = async () => {
   return data;
 };
 
+const setupChallenge = (challenge) => {
+  htmlCode.innerHTML = Prism.highlight(challenge.html, Prism.languages.html, 'html');
+};
+
+const displayChallenge = () => {
+  header.classList.add('challenge');
+
+  menuDiv.classList.remove('display-flex');
+  challengeDiv.classList.add('display-flex');
+};
+
 /**
  * @param {Event} event - The submit event from addEventListener
 */
@@ -65,7 +82,8 @@ const onFormSubmit = async (event) => {
     return;
   }
 
-  console.log(challenge);
+  setupChallenge(challenge);
+  displayChallenge();
 };
 
 export const initMenu = () => {
