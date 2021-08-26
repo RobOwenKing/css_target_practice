@@ -1,17 +1,19 @@
-const header = document.querySelector('header');
+const UI = {
+  header: document.querySelector('header'),
 
-const menuDiv = document.getElementById('menu');
-const loading = document.getElementById('loading');
-const loadError = document.getElementById('load-error');
-const challengeForm = document.getElementById('challenge-form');
-const challengeSelect = document.getElementById('challenge-select');
+  menuDiv: document.getElementById('menu'),
+  loading: document.getElementById('loading'),
+  loadError: document.getElementById('load-error'),
+  challengeForm: document.getElementById('challenge-form'),
+  challengeSelect: document.getElementById('challenge-select'),
 
-const challengeDiv = document.getElementById('challenge');
-const htmlCode = document.getElementById('html-code');
-const inputTextarea = document.getElementById('input-textarea');
-const inputCode = document.getElementById('input-code');
+  challengeDiv: document.getElementById('challenge'),
+  htmlCode: document.getElementById('html-code'),
+  inputTextarea: document.getElementById('input-textarea'),
+  inputCode: document.getElementById('input-code'),
 
-const outputTarget = document.getElementById('output-target');
+  outputTarget: document.getElementById('output-target')
+};
 
 const loadChallenges = async () => {
   const response = await fetch('http://localhost:3000/challenges');
@@ -21,19 +23,19 @@ const loadChallenges = async () => {
 };
 
 const onLoadFail = () => {
-  loading.classList.remove('display-block');
-  challengeForm.classList.remove('display-block');
+  UI.loading.classList.remove('display-block');
+  UI.challengeForm.classList.remove('display-block');
 
-  loadError.classList.add('display-block');
+  UI.loadError.classList.add('display-block');
 };
 
 const buildMenu = (data) => {
   data.forEach((challenge) => {
-    challengeSelect.insertAdjacentHTML('beforeend', `<option value=${challenge.id}>${challenge.name}</option>`);
+    UI.challengeSelect.insertAdjacentHTML('beforeend', `<option value=${challenge.id}>${challenge.name}</option>`);
   })
 
-  loading.classList.remove('display-block');
-  challengeForm.classList.add('display-block');
+  UI.loading.classList.remove('display-block');
+  UI.challengeForm.classList.add('display-block');
 };
 
 const populateMenu = async () => {
@@ -54,7 +56,7 @@ const populateMenu = async () => {
  * @see onFormSubmit()
 */
 const loadChallenge = async () => {
-  const response = await fetch(`http://localhost:3000/challenges/${challengeSelect.value}`);
+  const response = await fetch(`http://localhost:3000/challenges/${UI.challengeSelect.value}`);
   const data = await response.json();
 
   return data;
@@ -69,23 +71,23 @@ const displayTarget = (challenge) => {
       </head>
       <body>${challenge.html}</body>
     </html>`;
-  outputTarget.src = 'data:text/html,' + encodeURIComponent(iframeHTML);
+  UI.outputTarget.src = 'data:text/html,' + encodeURIComponent(iframeHTML);
 };
 
 const setupChallenge = (challenge) => {
-  htmlCode.innerHTML = Prism.highlight(challenge.html, Prism.languages.html, 'html');
+  UI.htmlCode.innerHTML = Prism.highlight(challenge.html, Prism.languages.html, 'html');
 
-  inputTextarea.value = '';
-  inputCode.innerHTML = '';
+  UI.inputTextarea.value = '';
+  UI.inputCode.innerHTML = '';
 
   displayTarget(challenge);
 };
 
 const displayChallenge = () => {
-  header.classList.add('challenge');
+  UI.header.classList.add('challenge');
 
-  menuDiv.classList.remove('display-flex');
-  challengeDiv.classList.add('display-flex');
+  UI.menuDiv.classList.remove('display-flex');
+  UI.challengeDiv.classList.add('display-flex');
 };
 
 /**
@@ -109,5 +111,5 @@ const onFormSubmit = async (event) => {
 
 export const initMenu = () => {
   populateMenu();
-  challengeForm.addEventListener('submit', onFormSubmit);
+  UI.challengeForm.addEventListener('submit', onFormSubmit);
 };
