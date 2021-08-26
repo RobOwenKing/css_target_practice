@@ -123,6 +123,7 @@ h1 .colour-fill {
   padding: 0.5em;
   margin: 0;
   border: none;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
   font-size: 1rem;
   line-height: 1.3rem;
   white-space: pre;
