@@ -8,6 +8,10 @@ const challengeSelect = document.getElementById('challenge-select');
 
 const challengeDiv = document.getElementById('challenge');
 const htmlCode = document.getElementById('html-code');
+const inputTextarea = document.getElementById('input-textarea');
+const inputCode = document.getElementById('input-code');
+
+const outputTarget = document.getElementById('output-target');
 
 const loadChallenges = async () => {
   const response = await fetch('http://localhost:3000/challenges');
@@ -56,8 +60,25 @@ const loadChallenge = async () => {
   return data;
 };
 
+const displayTarget = (challenge) => {
+  const iframeHTML = `
+    <!doctype html>
+    <html>
+      <head>
+        <style>${challenge.css}</style>
+      </head>
+      <body>${challenge.html}</body>
+    </html>`;
+  outputTarget.src = 'data:text/html,' + encodeURIComponent(iframeHTML);
+};
+
 const setupChallenge = (challenge) => {
   htmlCode.innerHTML = Prism.highlight(challenge.html, Prism.languages.html, 'html');
+
+  inputTextarea.value = '';
+  inputCode.innerHTML = '';
+
+  displayTarget(challenge);
 };
 
 const displayChallenge = () => {
