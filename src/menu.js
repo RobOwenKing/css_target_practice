@@ -45,25 +45,28 @@ const loadChallenge = async (UI) => {
   return data;
 };
 
-const displayTarget = (challenge, UI) => {
+const displayTarget = (CHALLENGE, UI) => {
   const iframeHTML = `
     <!doctype html>
     <html>
       <head>
-        <style>${challenge.css}</style>
+        <style>${CHALLENGE.css}</style>
       </head>
-      <body>${challenge.html}</body>
+      <body>${CHALLENGE.html}</body>
     </html>`;
   UI.outputTarget.src = 'data:text/html,' + encodeURIComponent(iframeHTML);
 };
 
-const setupChallenge = (challenge, UI) => {
-  UI.htmlCode.innerHTML = Prism.highlight(challenge.html, Prism.languages.html, 'html');
+const setupChallenge = (newChallenge, UI, CHALLENGE) => {
+  CHALLENGE.html = newChallenge.html;
+  CHALLENGE.css = newChallenge.css;
+
+  UI.htmlCode.innerHTML = Prism.highlight(CHALLENGE.html, Prism.languages.html, 'html');
 
   UI.inputTextarea.value = '';
   UI.inputCode.innerHTML = '';
 
-  displayTarget(challenge, UI);
+  displayTarget(CHALLENGE, UI);
 };
 
 const displayChallenge = (UI) => {
@@ -76,23 +79,23 @@ const displayChallenge = (UI) => {
 /**
  * @param {Event} event - The submit event from addEventListener
 */
-const onFormSubmit = async (UI, event) => {
+const onFormSubmit = async (UI, CHALLENGE, event) => {
   // Need to prevent default form submission behaviour
   event.preventDefault();
 
-  let challenge;
+  let newChallenge;
   try {
-    challenge = await loadChallenge(UI);
+    newChallenge = await loadChallenge(UI);
   } catch(e) {
     onLoadFail(UI);
     return;
   }
 
-  setupChallenge(challenge, UI);
+  setupChallenge(newChallenge, UI, CHALLENGE);
   displayChallenge(UI);
 };
 
-export const initMenu = (UI) => {
+export const initMenu = (UI, CHALLENGE) => {
   populateMenu(UI);
-  UI.challengeForm.addEventListener('submit', onFormSubmit.bind(null, UI));
+  UI.challengeForm.addEventListener('submit', onFormSubmit.bind(null, UI, CHALLENGE));
 };

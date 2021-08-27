@@ -15,18 +15,13 @@ const UI = {
   htmlCode: document.getElementById('html-code'),
   inputTextarea: document.getElementById('input-textarea'),
   inputCode: document.getElementById('input-code'),
+  inputCode: document.getElementById('input-code'),
 
-  outputTarget: document.getElementById('output-target')
+  outputTarget: document.getElementById('output-target'),
+  outputUser: document.getElementById('output-user')
 };
 
-
-const htmlCode = document.getElementById('html-code');
-const inputTextarea = document.getElementById('input-textarea');
-const inputPre = document.getElementById('input-pre');
-const inputCode = document.getElementById('input-code');
-const outputUser = document.getElementById('output-user');
-
-const html = '<p>Test!</p>';
+const CHALLENGE = {};
 
 /* https://stackoverflow.com/a/61421435 */
 const updateOutput = (css, iframe) => {
@@ -36,28 +31,28 @@ const updateOutput = (css, iframe) => {
       <head>
         <style>${css}</style>
       </head>
-      <body>${html}</body>
+      <body>${CHALLENGE.html}</body>
     </html>`;
   iframe.src = 'data:text/html,' + encodeURIComponent(iframeHTML);
 };
 
-inputTextarea.addEventListener('input', (event) => {
-  const userCSS = inputTextarea.value;
-  inputCode.innerHTML = Prism.highlight(userCSS, Prism.languages.css, 'css');
-  updateOutput(userCSS, outputUser);
+UI.inputTextarea.addEventListener('input', (event) => {
+  const userCSS = UI.inputTextarea.value;
+  UI.inputCode.innerHTML = Prism.highlight(userCSS, Prism.languages.css, 'css');
+  updateOutput(userCSS, UI.outputUser);
 });
 
-inputTextarea.addEventListener('scroll', (event) => {
-  inputPre.scrollTop = inputTextarea.scrollTop;
+UI.inputTextarea.addEventListener('scroll', (event) => {
+  UI.inputPre.scrollTop = UI.inputTextarea.scrollTop;
+  UI.inputCode.scrollTop = UI.inputTextarea.scrollTop;
 });
 
-htmlCode.innerHTML = Prism.highlight(html, Prism.languages.html, 'html');
 
 /*
   Populates the <select> with <option>s based on the API
   and adds an Event listener to display chosen challenge
 */
-initMenu(UI);
+initMenu(UI, CHALLENGE);
 /*
   Adds an Event listener to allow users to adjust
   the relative widths of the input and output
