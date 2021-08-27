@@ -1,3 +1,4 @@
+import { initInput } from './editor.js';
 import { initMenu } from './menu.js';
 import { initResizeable } from './resize.js';
 import { initTabs } from './tabs.js';
@@ -23,31 +24,7 @@ const UI = {
 
 const CHALLENGE = {};
 
-/* https://stackoverflow.com/a/61421435 */
-const updateOutput = (css, iframe) => {
-  const iframeHTML = `
-    <!doctype html>
-    <html>
-      <head>
-        <style>${css}</style>
-      </head>
-      <body>${CHALLENGE.html}</body>
-    </html>`;
-  iframe.src = 'data:text/html,' + encodeURIComponent(iframeHTML);
-};
-
-UI.inputTextarea.addEventListener('input', (event) => {
-  const userCSS = UI.inputTextarea.value;
-  UI.inputCode.innerHTML = Prism.highlight(userCSS, Prism.languages.css, 'css');
-  updateOutput(userCSS, UI.outputUser);
-});
-
-UI.inputTextarea.addEventListener('scroll', (event) => {
-  UI.inputPre.scrollTop = UI.inputTextarea.scrollTop;
-  UI.inputCode.scrollTop = UI.inputTextarea.scrollTop;
-});
-
-
+initInput(UI, CHALLENGE);
 /*
   Populates the <select> with <option>s based on the API
   and adds an Event listener to display chosen challenge
