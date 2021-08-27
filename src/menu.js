@@ -1,3 +1,5 @@
+import { updateOutput } from './editor.js';
+
 const loadChallenges = async () => {
   const response = await fetch('http://localhost:3000/challenges');
   const data = await response.json();
@@ -45,18 +47,6 @@ const loadChallenge = async (UI) => {
   return data;
 };
 
-const displayTarget = (CHALLENGE, UI) => {
-  const iframeHTML = `
-    <!doctype html>
-    <html>
-      <head>
-        <style>${CHALLENGE.css}</style>
-      </head>
-      <body>${CHALLENGE.html}</body>
-    </html>`;
-  UI.outputTarget.src = 'data:text/html,' + encodeURIComponent(iframeHTML);
-};
-
 const setupChallenge = (newChallenge, UI, CHALLENGE) => {
   CHALLENGE.html = newChallenge.html;
   CHALLENGE.css = newChallenge.css;
@@ -66,7 +56,7 @@ const setupChallenge = (newChallenge, UI, CHALLENGE) => {
   UI.inputTextarea.value = '';
   UI.inputCode.innerHTML = '';
 
-  displayTarget(CHALLENGE, UI);
+  updateOutput(UI.outputTarget, CHALLENGE.css, CHALLENGE.html);
 };
 
 const displayChallenge = (UI) => {
