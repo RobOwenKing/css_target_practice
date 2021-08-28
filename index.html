@@ -15,22 +15,41 @@
   <body>
     <div id="container">
       <header>
-        <h1 class="h1-challenge"><span class="colour-fill">CSS</span> Target Practice</h1>
+        <h1><span class="colour-fill">CSS</span> Target Practice</h1>
       </header>
-      <div class="challenge">
+      <div id="menu" class="display-flex">
+        <div id="loading" class="display-block" data-tab-menu>
+          <p>Loading...</p>
+        </div>
+        <div id="load-error" data-tab-menu>
+          <p>Unable to load challenge data. Check your internet connection.</p>
+        </div>
+        <form id="challenge-form" data-tab-menu>
+          <label for="challenge-select">Choose your challenge:</label>
+          <select name="challenges" id="challenge-select" required>
+            <option value="">--Please choose:--</option>
+            <option value="test1">Test 1</option>
+            <option value="test2">Test 2</option>
+            <option value="test3">Test 3</option>
+          </select>
+
+          <input type="submit" value="Go!">
+        </form>
+      </div>
+      <div id="challenge">
         <!-- Based on https://www.horuskol.net/blog/2020-03-05/live-code-highlighting-in-the-browser-with-vanilla-javascript/ -->
         <div id="input">
           <ul class="tabs">
             <li class="active-tab" data-tab-target="#challenge-html" data-tab-type="#input">HTML</li>
             <li data-tab-target="#input-css" data-tab-type="#input">Your CSS</li>
           </ul>
-          <div id="challenge-html" data-tab-content class="input-field display-content">
+          <div id="challenge-html" data-tab-content class="input-field display-block">
             <!-- Has to be long line because <pre> otherwise tabs in the <code> -->
             <pre id="html-pre" class="highlighted-output"><code id="html-code" class="language-html"></code></pre>
           </div>
           <fieldset class="input-field" id="input-css" data-tab-content>
-            <textarea id="input-textarea" aria-controls="code-highlighter" class="input" autocapitalize="off" spellcheck="false"></textarea>
-            <pre id="input-pre" class="highlighted-output"><code id="input-code" class="language-css"></code></pre>
+            <textarea id="input-textarea" class="input" autocapitalize="off" spellcheck="false"></textarea>
+            <pre id="input-pre" class="highlighted-output" aria-hidden="true"><code id="input-code" class="language-css"></code></pre>
           </fieldset>
         </div>
 
@@ -45,7 +64,7 @@
             <li class="active-tab" data-tab-target="#output-target" data-tab-type="#output">The target</li>
             <li data-tab-target="#output-user" data-tab-type="#output">Your attempt</li>
           </ul>
-          <iframe sandbox="allow-scripts" id="output-target" class="display-content" data-tab-content></iframe>
+          <iframe sandbox="allow-scripts" id="output-target" class="display-block" data-tab-content></iframe>
           <iframe sandbox="allow-scripts" id="output-user" data-tab-content></iframe>
         </div>
       </div>
