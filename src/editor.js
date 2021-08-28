@@ -20,6 +20,5 @@ export const initInput = (UI, CHALLENGE) => {
 
   UI.inputTextarea.addEventListener('scroll', (event) => {
     UI.inputPre.scrollTop = UI.inputTextarea.scrollTop;
-    UI.inputCode.scrollTop = UI.inputTextarea.scrollTop;
   });
 };

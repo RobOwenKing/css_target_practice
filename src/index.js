@@ -15,7 +15,7 @@ const UI = {
   challengeDiv: document.getElementById('challenge'),
   htmlCode: document.getElementById('html-code'),
   inputTextarea: document.getElementById('input-textarea'),
-  inputCode: document.getElementById('input-code'),
+  inputPre: document.getElementById('input-pre'),
   inputCode: document.getElementById('input-code'),
 
   outputTarget: document.getElementById('output-target'),
@@ -24,19 +24,23 @@ const UI = {
 
 const CHALLENGE = {};
 
+/*
+ * Adds input listener to inputTextarea to update outputUser
+ * Adds scroll listener to inputTextarea to line up inputCode and inputPre
+*/
 initInput(UI, CHALLENGE);
 /*
-  Populates the <select> with <option>s based on the API
-  and adds an Event listener to display chosen challenge
+ * Populates the <select> with <option>s based on the API
+   and adds an Event listener to display chosen challenge
 */
 initMenu(UI, CHALLENGE);
 /*
-  Adds an Event listener to allow users to adjust
-  the relative widths of the input and output
+ * Adds an Event listener to allow users to adjust
+   the relative widths of the input and output
 */
 initResizeable();
 /*
-  Add Event listeners so users can change input/output displays
-  eg: switch from seeing html-code to input-code
+ * Add Event listeners so users can change input/output displays
+   eg: switch from seeing html-code to input-code
 */
 initTabs();

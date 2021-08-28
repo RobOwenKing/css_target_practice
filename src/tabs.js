@@ -21,7 +21,5 @@ const onClick = (event) => {
 };
 
 export const initTabs = () => {
-  tabs.forEach(tab => {
-    tab.addEventListener('click', onClick);
-  })
-}
+  tabs.forEach(tab => { tab.addEventListener('click', onClick); })
+};
