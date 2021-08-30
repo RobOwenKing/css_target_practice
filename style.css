@@ -126,11 +126,9 @@ h1 .colour-fill {
   font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
   font-size: 1rem;
   line-height: 1.3rem;
-  white-space: pre;
   word-wrap: break-word;
   resize: none;
 }
-
 
 .input-field .input {
   z-index: 1;
@@ -141,6 +139,10 @@ h1 .colour-fill {
 
 .input-field .highlighted-output {
   z-index: 0;
+}
+
+#input-textarea {
+  white-space: pre-wrap;
 }
 
 iframe {
