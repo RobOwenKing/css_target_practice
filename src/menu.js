@@ -57,6 +57,7 @@ const setupChallenge = (newChallenge, UI, CHALLENGE) => {
   UI.inputCode.innerHTML = '';
 
   updateOutput(UI.outputTarget, CHALLENGE.css, CHALLENGE.html);
+  updateOutput(UI.outputUser, ' ', CHALLENGE.html);
 };
 
 const displayChallenge = (UI) => {
