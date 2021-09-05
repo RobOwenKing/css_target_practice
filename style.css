@@ -43,6 +43,7 @@ header h1 {
 
 header.challenge h1 {
   font-size: 2rem;
+  cursor: pointer;
 }
 
 h1 .colour-fill {
