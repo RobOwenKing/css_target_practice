@@ -86,7 +86,15 @@ const onFormSubmit = async (UI, CHALLENGE, event) => {
   displayChallenge(UI);
 };
 
+const onH1Click = (UI) => {
+  UI.header.classList.remove('challenge');
+
+  UI.menuDiv.classList.add('display-flex');
+  UI.challengeDiv.classList.remove('display-flex');
+};
+
 export const initMenu = (UI, CHALLENGE) => {
   populateMenu(UI);
   UI.challengeForm.addEventListener('submit', onFormSubmit.bind(null, UI, CHALLENGE));
+  UI.h1.addEventListener('click', onH1Click.bind(null, UI));
 };

@@ -5,6 +5,7 @@ import { initTabs } from './tabs.js';
 
 const UI = {
   header: document.querySelector('header'),
+  h1: document.querySelector('h1'),
 
   menuDiv: document.getElementById('menu'),
   loading: document.getElementById('loading'),
