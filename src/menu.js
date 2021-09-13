@@ -57,6 +57,7 @@ const setupChallenge = (newChallenge, UI, CHALLENGE) => {
   UI.inputCode.innerHTML = '';
 
   updateOutput(UI.outputTarget, CHALLENGE.css, CHALLENGE.html);
+  updateOutput(UI.outputUser, ' ', CHALLENGE.html);
 };
 
 const displayChallenge = (UI) => {
@@ -85,7 +86,28 @@ const onFormSubmit = async (UI, CHALLENGE, event) => {
   displayChallenge(UI);
 };
 
+const resetTabsDisplayed = () => {
+  const event = new MouseEvent('click', {
+    view: window,
+    bubbles: true,
+    cancelable: true
+  });
+
+  document.querySelector('[data-tab-target="#challenge-html"]').dispatchEvent(event);
+  document.querySelector('[data-tab-target="#output-target"]').dispatchEvent(event);
+};
+
+const onH1Click = (UI) => {
+  UI.header.classList.remove('challenge');
+
+  UI.menuDiv.classList.add('display-flex');
+  UI.challengeDiv.classList.remove('display-flex');
+
+  resetTabsDisplayed();
+};
+
 export const initMenu = (UI, CHALLENGE) => {
   populateMenu(UI);
   UI.challengeForm.addEventListener('submit', onFormSubmit.bind(null, UI, CHALLENGE));
+  UI.h1.addEventListener('click', onH1Click.bind(null, UI));
 };
