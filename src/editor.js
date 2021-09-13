@@ -1,3 +1,12 @@
+const onMessage = () => {
+  return `window.addEventListener('message', (event) => {
+            const newStyle = document.createElement('style');
+            newStyle.textContent = event.data;
+            document.head.append(newStyle);
+        }
+      )`;
+};
+
 /* https://stackoverflow.com/a/61421435 */
 export const updateOutput = (iframe, css, html) => {
   const iframeHTML = `
@@ -6,7 +15,12 @@ export const updateOutput = (iframe, css, html) => {
       <head>
         <style>${css}</style>
       </head>
-      <body>${html}</body>
+      <body>
+        ${html}
+        <script>
+          ${onMessage()}
+        </script>
+      </body>
     </html>`;
   iframe.src = 'data:text/html,' + encodeURIComponent(iframeHTML);
 };
@@ -21,7 +35,8 @@ export const initInput = (UI, CHALLENGE) => {
     }
 
     UI.inputCode.innerHTML = Prism.highlight(userCSS, Prism.languages.css, 'css');
-    updateOutput(UI.outputUser, userCSS, CHALLENGE.html);
+
+    UI.outputUser.contentWindow.postMessage(userCSS, "*");
   });
 
   UI.inputTextarea.addEventListener('scroll', (event) => {
