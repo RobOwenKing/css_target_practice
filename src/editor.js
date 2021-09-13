@@ -3,6 +3,9 @@ const onMessage = () => {
             const newStyle = document.createElement('style');
             newStyle.textContent = event.data;
             document.head.append(newStyle);
+
+            const styleTags = document.querySelectorAll('style');
+            styleTags[0].parentNode.removeChild(styleTags[0]);
         }
       )`;
 };
