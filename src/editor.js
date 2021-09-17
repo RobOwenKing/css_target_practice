@@ -1,3 +1,15 @@
+const onMessage = () => {
+  return `window.addEventListener('message', (event) => {
+            const newStyle = document.createElement('style');
+            newStyle.textContent = event.data;
+            document.head.append(newStyle);
+
+            const styleTags = document.querySelectorAll('style');
+            styleTags[0].parentNode.removeChild(styleTags[0]);
+        }
+      )`;
+};
+
 /* https://stackoverflow.com/a/61421435 */
 export const updateOutput = (iframe, css, html) => {
   const iframeHTML = `
@@ -5,8 +17,14 @@ export const updateOutput = (iframe, css, html) => {
     <html>
       <head>
         <style>${css}</style>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       </head>
-      <body>${html}</body>
+      <body>
+        ${html}
+        <script>
+          ${onMessage()}
+        </script>
+      </body>
     </html>`;
   iframe.src = 'data:text/html,' + encodeURIComponent(iframeHTML);
 };
@@ -21,7 +39,8 @@ export const initInput = (UI, CHALLENGE) => {
     }
 
     UI.inputCode.innerHTML = Prism.highlight(userCSS, Prism.languages.css, 'css');
-    updateOutput(UI.outputUser, userCSS, CHALLENGE.html);
+
+    UI.outputUser.contentWindow.postMessage(userCSS, "*");
   });
 
   UI.inputTextarea.addEventListener('scroll', (event) => {
